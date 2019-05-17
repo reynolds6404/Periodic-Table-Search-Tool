@@ -14,45 +14,49 @@ public class Main {
 
         System.out.println("Search Options:\n(1) Element Name\n(2) Element Abbreviation\n(3) Atomic Number");
         Scanner s = new Scanner(System.in); //Gives the ability for the user to add input
-
-        //Sets search criteria based on what user selects, makes call to search class
-        System.out.print("\nChoose search [1/2/3]: ");
-        int choice = s.nextInt();
-        if (choice == 1){
-            System.out.print("Enter an element name to search for:");
-            String lookfor = s.next();
-            int found = search.namesearch(lookfor.toLowerCase());
-            if (found == -1){
-                System.out.println("Not found");
+        int choice = -2;
+        while(choice != -1){
+            //Sets search criteria based on what user selects, makes call to search class
+            System.out.print("\nChoose search [1/2/3]: ");
+            choice = s.nextInt();
+            if (choice == 1){
+                System.out.print("Enter an element name to search for:");
+                String lookfor = s.next();
+                int found = search.namesearch(lookfor.toLowerCase());
+                if (found == -1){
+                    System.out.println("Not found");
+                }
+                else{
+                    display.show(found);
+                }
+            }
+            else if (choice == 2){
+                System.out.print("Enter an element abbreviation to search for:");
+                String lookfor = s.next();
+                int found = search.abbrevsearch(lookfor.toLowerCase());
+                if (found == -1){
+                    System.out.println("Not found");
+                }
+                else{
+                    display.show(found);
+                }
+            }
+            else if (choice == 3){
+                System.out.print("Enter an atomic number to search for:");
+                int lookfor = s.nextInt();
+                int found = search.numsearch(lookfor);
+                if (found == -1){
+                    System.out.println("Not found");
+                }
+                else{
+                    display.show(found);
+                }
             }
             else{
-                display.show(found);
+                if (choice != -1){
+                    System.out.println("Illegal entry, Restarting.");
+                }
             }
-        }
-        else if (choice == 2){
-            System.out.print("Enter an element abbreviation to search for:");
-            String lookfor = s.next();
-            int found = search.abbrevsearch(lookfor.toLowerCase());
-            if (found == -1){
-                System.out.println("Not found");
-            }
-            else{
-                display.show(found);
-            }
-        }
-        else if (choice == 3){
-            System.out.print("Enter an atomic number to search for:");
-            int lookfor = s.nextInt();
-            int found = search.numsearch(lookfor);
-            if (found == -1){
-                System.out.println("Not found");
-            }
-            else{
-                display.show(found);
-            }
-        }
-        else{
-            System.out.println("Illegal int, Please restart.");
         }
     }
 }
