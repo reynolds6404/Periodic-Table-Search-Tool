@@ -45,7 +45,7 @@ public class search {
     public static int namesearch(String look){
        int foundat = -1;
        for (int i = 0; i < name.length; i++){
-           if (name[i].toLowerCase().equals(look)){
+           if (name[i].toLowerCase().equals(look.toLowerCase())){
                foundat = i;
            }
        }
@@ -55,7 +55,7 @@ public class search {
     public static int abbrevsearch(String look){
         int foundat = -1;
         for (int i = 0; i < abbreviation.length; i++){
-            if (abbreviation[i].toLowerCase().equals(look)){
+            if (abbreviation[i].toLowerCase().equals(look.toLowerCase())){
                 foundat = i;
             }
         }
